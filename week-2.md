@@ -95,19 +95,26 @@
     -   layouting
     -   pembentukan render tree (gambar 1)
         ![pembentukan render tree](./assets/week-2/1.png "pembentukan render tree")
--   Jika saat proses parsing HTML, ditemukan tag **script**, secara default proses parsing akan dihentikan sampai script tersebut selesai diunduh dan dijalankan (gambar 2)
+-   Jika saat proses parsing HTML, ditemukan tag **script**, secara default proses parsing akan dihentikan sampai script tersebut selesai diunduh dan dijalankan
+    ![gambar 2](./assets/week-2/2.png "gambar 2")
 -   Jika script yang diunduh itu besar, ada jeda yang cukup lama antara halaman mulai dimuat sampai keluar tampilan, solusinya adalah :
 
     > -   Taruh tag **script** eksternal sebelum tag penutup **body** - ini solusi paling umum agar dia mulai diproses setelah parsing HTML selesai
-    > -   Taruh tag **script** sedini mungkin dan gunakan atribut async - atribut async akan membuat script tersebut diunduh tanpa menghentikan proses parsing dan dieksekusi seselesainya ia diunduh. (gambar 3)
-    > -   Untuk script yang bergantung pada DOM, taruh tag **script** sedini mungkin, dan gunakan atribut defer - atribut defer akan membuat script tersebut diunduh tanpa menghentikan proses parsing dan dieksekusi seselesainya proses parsing selesai.(gambar 4)
+    > -   Taruh tag **script** sedini mungkin dan gunakan atribut async - atribut async akan membuat script tersebut diunduh tanpa menghentikan proses parsing dan dieksekusi seselesainya ia diunduh.
+    >     ![gambar 3](./assets/week-2/3.png "gambar 3")
+    > -   Untuk script yang bergantung pada DOM, taruh tag **script** sedini mungkin, dan gunakan atribut defer - atribut defer akan membuat script tersebut diunduh tanpa menghentikan proses parsing dan dieksekusi seselesainya proses parsing selesai.
+    >     ![gambar 4](./assets/week-2/4.png "gambar 4")
 
 -   DOM bukan bagian dari JavaScript, melainkan browser (Web API)
--   mencari elemen HTML (gambar 5)
+-   mencari elemen HTML
+    ![gambar 5](./assets/week-2/5.png "gambar 5")
 -   mengubah konten elemen
-    -   Element.textContent : digunakan untuk mengubah teks di dalam sebuah element (gambar 6)
-    -   Element.innerHTML : digunakan untuk mengubah konten HTML di dalam sebuah element. (gambar 7)
-    -   perbandingan innerHTML dan textContent (gambar 8)
+    -   Element.textContent : digunakan untuk mengubah teks di dalam sebuah element
+        ![gambar 6](./assets/week-2/6.png "gambar 6")
+    -   Element.innerHTML : digunakan untuk mengubah konten HTML di dalam sebuah element.
+        ![gambar 7](./assets/week-2/7.png "gambar 7")
+    -   perbandingan innerHTML dan textContent
+        ![gambar 8](./assets/week-2/8.png "gambar 8")
 -   membuat elemen HTML
     -   createElement()
     -   .textContent untuk mengubah kontennya
@@ -123,4 +130,3 @@
     -   instruksi tertentu
         -   click : element yang diklik akan melakukan suatu
         -   blur : element kehilangan fokus dari user (misal user klk mouse di luar element tersebut atau user klik tab untuk berpindah element)
-            -form submission (gambar 9)
