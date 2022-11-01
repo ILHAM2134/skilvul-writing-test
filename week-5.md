@@ -2,20 +2,20 @@
 
 -   secara physical, web server terdiri dari 2 bagian :
 
-    -   Hardware : On the hardware side, a web server is a computer that stores web server software and a website's component files. (for example, HTML documents, images, CSS stylesheets, and JavaScript files) A web server connects to the Internet and supports physical data interchange with other devices connected to the web.
+    -   Hardware : secara hardware, web server berupa perangkat keras komputer yg terhubung dengan jaringan yg menyimpan berbagai software dan data yg mendukung adanya layanan web server
 
-    -   Software : On the software side, a web server includes several parts that control how web users access hosted files. At a minimum, this is an HTTP server. An HTTP server is software that understands URLs (web addresses) and HTTP (the protocol your browser uses to view webpages). An HTTP server can be accessed through the domain names of the websites it stores, and it delivers the content of these hosted websites to the end user's device.
+    -   Software : secara software, web server merupakan perangkat lunak yg mengandung berbagai protokol software seperti HTTP, dll. yg dapat memanipulasi file yg dikrim, dll
 
 -   ilustrasi cara kerja web server
     ![cara-kerja-web-server](./assets/week-5/1.%20ilustrasi%20web%20server.png "cara-kerja-web-server")
 
 -   secara cara kerja, web server terbagi kedalam :
 
-    -   Static Web Server : A static web server, or stack, consists of a computer (hardware) with an HTTP server (software). We call it "static" because the server sends its hosted files as-is to your browser.
+    -   Static Web Server : merupakan komputer (hardware) dengan HTTP server (software) yg bisa mengirim file yg dihosting kedalam browser / software yg merequestnya
 
-    -   Dynamic Web Server : A dynamic web server consists of a static web server plus extra software, most commonly an application server and a database. We call it "dynamic" because the application server updates the hosted files before sending content to your browser via the HTTP server
+    -   Dynamic Web Server : merupakan static web server dengan tambahan fungsionalitas lain. disebut dynamic karena server dapat mengupdate file yg dihostingnya sebelum file tersebut dikirim ke client melalui protokol HTTP
 
--   Server Side Programming : Web servers wait for client request messages, process them when they arrive, and reply to the web browser with an HTTP response message. The response contains a status line indicating whether or not the request succeeded (e.g. "HTTP/1.1 200 OK" for success). The body of a successful response to a request would contain the requested resource (e.g. a new HTML page, or an image, etc...), which could then be displayed by the web browser.
+-   Server Side Programming : web server menunggu request dari client dan membalas dengan HTTP message response yg mengandung response status beserta body yg mengandung text, json, file, dll yg akan ditampilkan kedalam browser
 
 -   Static Sites : The diagram on next slide shows a basic web server architecture for a static site (a static site is one that returns the same hard-coded content from the server whenever a particular resource is requested). When a user wants to navigate to a page, the browser sends an HTTP "GET" request specifying its URL.
 
@@ -279,4 +279,39 @@ app.get('/hello', (req, res) => {
     -   Melanjutkan ke middleware function selanjutnya atau ke handler function dalam suatu request response cycle.
 -
 
-# Database MySQL
+# Intro Database MySQL
+
+-   salah satu jenis database relasional
+
+-   database relasional adalah database yg tersusun rapi dalam satu atau beberapa table dan bisa saling memiliki hubungan keterkaitan antara satu table dengan table yg lain
+
+-   entity adalah suatu objek (table) yg memiliki beberapa attribute dalam database
+
+-   attribute adalah karakteristik / nilai dari suatu entity
+
+-   nilai dari suatu kolom dalam table dapat memiliki berbagai macam tipe data, tipe data umum pada database MySQL antara lain :
+
+    -   CHAR(size) : string dengan panjang sesuai size yg didefinisikan,maksimal 255 karakter
+    -   VARCHAR(size) : string dengan panjan sesuai size yg didefinisikan, maksimal 65535 karakter
+    -   BOOL : boolean, nilai 0 berarti false,nilai 1 berarti true
+    -   INT(size) : integer / bilangan bulat dengan maksimal karakter sesuai size yg didefinisikan
+    -   FLOAT : bilangan tidak bulat (terdapat koma)
+
+-   relasi adalah hubungan antar table dalam database, berikut contoh relasi antara tabel penyanyi dan track
+    ![relasi-db](./assets/week-5/5.relasi-db.png "relasi-db")
+
+-   relasi diatas adalah cntoh relasi one to many, singer memiliki banyak track, sedangkan track hanya punya satu penyanyi
+-   syntax MySQL dalam membuat Table User
+
+    ```
+    CREATE TABLE 'user' (
+        'user_id' INT NOT NULL AUTO_INCREMENT,
+        'name' VARCHAR(50) NOT NULL DEFAULT '',
+        'email' VARHAR(50) NOT NULL DEFAULT '',
+        'password' VARCHAR(50) NOT NULL DEFAULT '',
+        PRIMARY_KEY ('user_id')
+    )
+    ```
+
+-   output dari syntax membuat database diatas
+    ![output-db](./assets/week-5/6.output-db.png "output-db")
