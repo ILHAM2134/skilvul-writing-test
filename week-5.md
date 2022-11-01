@@ -13,96 +13,63 @@
 
     -   Static Web Server : merupakan komputer (hardware) dengan HTTP server (software) yg bisa mengirim file yg dihosting kedalam browser / software yg merequestnya
 
-    -   Dynamic Web Server : merupakan static web server dengan tambahan fungsionalitas lain. disebut dynamic karena server dapat mengupdate file yg dihostingnya sebelum file tersebut dikirim ke client melalui protokol HTTP
+    -   Dynamic Web Server : merupakan static web server dengan tambahan fungsionalitas lain. disebut dynamic karena server dapat mengupdate dan memproses file yg dihostingnya sebelum file tersebut dikirim ke client melalui protokol HTTP
 
 -   Server Side Programming : web server menunggu request dari client dan membalas dengan HTTP message response yg mengandung response status beserta body yg mengandung text, json, file, dll yg akan ditampilkan kedalam browser
 
--   Static Sites : The diagram on next slide shows a basic web server architecture for a static site (a static site is one that returns the same hard-coded content from the server whenever a particular resource is requested). When a user wants to navigate to a page, the browser sends an HTTP "GET" request specifying its URL.
-
--   Dynamic Site : A dynamic website is one where some of the response content is generated dynamically, only when needed. On a dynamic website HTML pages are normally created by inserting data from a database into placeholders in HTML templates (this is a much more efficient way of storing large amounts of content than using static websites).
-
--   A dynamic site can return different data for a URL based on information provided by the user or stored preferences and can perform other operations as part of returning a response (e.g. sending notifications).
-
--   Most of the code to support a dynamic website must run on the server. Creating this code is known as "server-side programming" (or sometimes "back-end scripting").
+-   Static Sites : mengembalikan hard-code tanpa pengolahan / pemrosesan data lebih lanjut
 
 ![static-server-side](./assets/week-5/2.%20server-client%20side.png "static-server-side")
 
-    - Requests for static resources are handled in the same way as for static sites (static resources are any files that don't change —typically: CSS, JavaScript, Images, pre-created PDF files etc).
+-   Dynamic Sites : respons dari konten dapat diolah / diproses secara dinamis sebelum dikirim ke client (ketika dibutuhkan). Dynamic site dapat mengembalikan data yang berbeda tergantung input dari client dan algoritma pengolahan data pada server
 
-    - A simplified diagram of a web server that uses server-side programming to get information from a database and construct HTML from templates. This is the same diagram as is in the Client-Server overview. Requests for dynamic resources are instead forwarded to server-side code (shown in the diagram as a Web Application).
+-   yang dapat dilakukan pada server-side
 
-    - For "dynamic requests" the server interprets the request, reads required information from the database.
+    -   Efficient storage and delivery of information
+    -   Customised user experience
 
-    - Combines the retrieved data with HTML templates and sends back a response containing the generated HTML (5,6)
+    -   Controlled access to content
 
--   What can you do on the server-side?
+    -   Store session/state information
 
-    -   Efficient storage and delivery of information : Imagine how many products are available on Amazon, and imagine how many posts have been written on Facebook? Creating a separate static page for each product or post would be completely impractical.
+    -   Data analysis
 
-    -   Customised user experience : Servers can store and use information about clients to provide a convenient and tailored user experience. For example, many sites store credit cards so that details don't have to be entered again. Sites like Google Maps can use saved or current locations for providing routing information, and search or travel history to highlight local businesses in search results.
+-   REST (REpresentational State Transfer) : gaya arsitektural yang menyediakan standar antara computer systems dengan web yag dapat membuat proses komunikasi antar komputer dan perangkat menjadi efisien dan mudah. RESTful adalah sistem yang menerapkan REST
 
-    -   Controlled access to content : Server-side programming allows sites to restrict access to authorized users and serve only the information that a user is permitted to see. Social networks like Facebook allow users to fully control their own data but only allow their friends to view or comment on it. The user determines who can see their data, and by extension, whose data appears in their feed — authorization is a central part of the user experience!
+-   dalam arsitektur REST, proses antara client dan server dapat berjalan tanpa harus saling mengetahui proses satu sama lain (stateless). hal ini dapat memberi keunggulan berupa code pada client dapat saja berubah tanpa harus mengganggu proses operasi pada server, begitu pula sebaliknya
 
-    -   Store session/state information : Server-side programming allows developers to make use of sessions — basically, a mechanism that allows a server to store information on the current user of a site and send different responses based on that information. This allows, for example, a site to know that a user has previously logged in and display links to their emails or order history, or perhaps save the state of a simple game so that the user can go to a site again and carry on where they left it.
+-   komunikasi antara client dan server
 
-    -   Notifications and communication : Servers can send general or user-specific notifications through the website itself or via email, SMS, instant messaging, video conversations, or other communications services.
-        -   Facebook and Twitter send emails and SMS messages to notify you of new communications.
-        -   Amazon regularly sends product e-mails that suggest products similar to those already bought or viewed that you might be interested in.
-    -   Data analysis : A website may collect a lot of data about users: what they search for, what they buy, what they recommend, how long they stay on each page. Server-side programming can be used to refine responses based on analysis of this data. Amazon and Google both advertise products based on previous searches (and purchases)
+    -   client membuat request pada server (dlm kasus ini, menggunakan protokol HTTP) yang berisi :
 
--   REST : REpresentational State Transfer, is an architectural style for providing standards between computer systems on the web, making it easier for systems to communicate with each other. REST-compliant systems, often called RESTful systems, are characterized by how they are stateless and separate the concerns of client and server
-
--   In the REST architectural style, the implementation of the client and the implementation of the server can be done independently without each knowing about the other. This means that the code on the client side can be changed at any time without affecting the operation of the server, and the code on the server side can be changed without affecting the operation of the client.
-
--   By using a REST interface, different clients hit the same REST endpoints, perform the same actions, and receive the same responses. Clients can be web platform, mobile platform, or desktop platform.
-
--   Communication between Client and Server
-
-    -   Making Requests : REST requires that a client make a request to the server in order to retrieve or modify data on the server. A request generally consists of:
-
-        -   an HTTP verb, which defines what kind of operation to perform
-        -   a header, which allows the client to pass along information about the request
-        -   a path to a resource
-        -   an optional message body containing data
-        -   REQ terdiri dari :
-            -   GET — retrieve a specific resource (by id) or a collection of resources
-            -   POST — create a new resource
-            -   PUT — update a specific resource (by id)
-            -   DELETE — remove a specific resource by id
-
-    -   Headers and Accept Parameters
-
-        -   In the header of the request, the client sends the type of content that it is able to receive from the server. This is called the Accept field, and it ensures that the server does not send data that cannot be understood or processed by the client. The options for types of content are MIME Types (or Multipurpose Internet Mail Extensions, which you can read more about in the MDN Web Docs
-
-        -   Other types and commonly used subtypes:
-            -   image — image/png, image/jpeg, image/gif
-            -   audio — audio/wav, audio/mpeg
-            -   video — video/mp4, video/ogg
-            -   application — application/json, application/pdf, application/xml, application/octet-stream
-
-    -   Paths
-
-        -   Requests must contain a path to a resource that the operation should be performed on. In RESTful APIs, paths should be designed to help the client know what is going on.
-
-        -   A path like skilvulstore.com/customers/223/orders/12 is clear in what it points to, even if you’ve never seen this specific path before, because it is hierarchical and descriptive. We can see that we are accessing the order with id 12 for the customer with id 223.
+        -   header : berisi informasi request
+        -   resources path
+        -   body : mengandung data yg hendak dikirim (opsional)
+        -   req terdiri dari :
+            -   GET — meminta suatu informasi / response dari server
+            -   POST — menambahkan informasi pada server
+            -   PUT — mengudate informasi pada server
+            -   DELETE — menghapus informasi pada server
 
     -   Response
 
-        -   Content Types : For example, when a client is accessing a resource with id 23 in an articles resource with this GET Request:
+        -   Content Types : mengembalikan konten dengan tipe yg sesuai yg di-request oleh client, contohnya :
 
             ```
+            //request
+
             GET /articles/23 HTTP/1.1
             Accept: text/html, application/xhtml
             ```
 
-        -   The server might send back the content with the response header:
-
             ```
+            //response
+
             HTTP/1.1 200 (OK)
             Content-Type: text/html
             ```
 
-        -   Response Codes : Responses from the server contain status codes to alert the client to information about the success of the operation. As a developer, you do not need to know every status code (there are many of them), but you should know the most common ones and how they are used.
+        -   response codes : respons header yang berisi kode yg menunjukan apakah request client berhasil atau tidak
 
         ![response-code](./assets/week-5/3.%20status-response.png "response-code")
 
@@ -110,7 +77,7 @@
 
 ## Intro
 
--   Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser.
+-   menurut wikipedia, Node JS adalah open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting—running scripts server-side to produce dynamic web page content before the page is sent to the user's web browser.
 
 -   Arsitektur Node JS
 
@@ -213,11 +180,14 @@
 
 ## Intro
 
--   Express.js, or simply Express, is a back end web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs. It has been called the de facto standard server framework for Node.js.
+-   menurut wikipedia, Express JS adalah back end web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs. It has been called the de facto standard server framework for Node.js.
 
 -   Back end app adalah aplikasi yang berjalan di server-side yang bekerja untuk memberikan informasi berupa data sesuai request dari client / browser / front end app. Umumnya server-side app membuat REST API
+
 -   Kelebihan dari framework ini terletak pada fitur caching, support dengan Google V8 Engine, JavaScript, serta didukung oleh komunitas dan skalabilitas aplikasi yang baik.
+
 -   REST (Representional State Transfer) adalah sebuah arsitektur metode komunikasi yang menggunakan protokol HTTP untuk pertukaran data dimana metode ini sering diterapkan dalam pengembangan aplikasi. Dengan tujuannya untuk menjadikan sistem memiliki performa yang baik, cepat dan mudah untuk di kembangkan (scale) terutama dalam pertukaran dan komunikasi data.
+
 -   RESTFUL API memiliki 4 komponen penting yaitu:
 
     -   URL Design
