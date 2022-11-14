@@ -359,3 +359,51 @@ db.namaBD.remove({'attr1':'value1'})
     ```
 
 # Docker intro
+
+-   Docker adalah software yang menjalankan suatu aplikasi menggunakan container
+
+-   Docker men-sharing kernel dari host OS, serta meng-container-kan suatu aplikasi agar dapat dijalankan dimana saja dan kapan saja
+
+-   Aplikasi yg berjalan di dalam container docker tidak terpengaruh oleh faktor luar karena terisolasi
+
+-   Docker berfungsi sebagai penyedia layanan virtual bagi aplikasi yg diinstall pada sebuah host. Docker akan menyediakan hal-hal yang diperlukan untuk aplikasi mulai dari akses file, koneksi internet, hingga port agar aplikasi dapat berjalan dengan mulus
+
+-   VM memakan banyak resource dan waktu utk booting karena melakukan virtualisasi pada host hardware-nya. Sedangkan container kebalikannya dari vm, container melakukan virtualisasi pada host OS-nya
+
+-   istilah pada docker
+
+        - Docker File : blueprint untuk membuat image
+
+        - Image ; template untuk menjalankan container
+
+        - Container ; perwujudan dari image
+
+        - Docker Registry : tempat untuk upload/download image
+
+-   panduan instalasi docker : docs.docker.com/get-docker
+
+-   command dasar
+
+    -   download image dari docker hub
+
+    ```
+    docker pull <nama-docker-hub>
+    ```
+
+    -   Melihat kumpulan images yang sudah terdownload
+
+    ```
+    docker images
+    ```
+
+    -   Menjalankan container
+
+    ```
+    docker run <nama-container>
+    ```
+
+    -   Melihat container yang berjalan
+
+    ```
+    docker ps
+    ```
